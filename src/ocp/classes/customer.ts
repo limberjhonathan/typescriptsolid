@@ -1,6 +1,6 @@
-import { CustomerProtocol } from "./interfaces/customer-protocol";
+import { IndividualCustomerProtocol, EnterpriseCustomerProtocol } from "./interfaces/customer-protocol";
 
-export class IndividualCustomer implements CustomerProtocol {
+export class IndividualCustomer implements IndividualCustomerProtocol {
     firstName: string;
     lastName: string;
     cpf: string;
@@ -13,16 +13,12 @@ export class IndividualCustomer implements CustomerProtocol {
         this.cnpj = ''
     }
 }
-export class EnterpriseCustomer implements CustomerProtocol {
-    firstName: string;
-    lastName: string;
-    cpf: string;
+export class EnterpriseCustomer implements EnterpriseCustomerProtocol {
+    name: string;
     cnpj: string;
 
-    constructor(firstName: string, lastName: string, cpf: string){
-        this.firstName = 'firstName';
-        this.lastName = 'latName';
-        this.cpf = cpf;
-        this.cnpj = ''
+    constructor(name: string, cnpj: string){
+        this.name = name;
+        this.cnpj = cnpj;
     }
 }

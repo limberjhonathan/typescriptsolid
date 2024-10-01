@@ -1,7 +1,11 @@
-export interface CustomerProtocol {
+export interface IndividualCustomerProtocol {
     firstName: string;
     lastName: string;
-    cpf: string; 
-    cnpj: string
+    cpf: string;
+}
+
+export interface EnterpriseCustomerProtocol {
+    name: string;
+    cnpj: string;
 }
 
