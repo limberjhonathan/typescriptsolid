@@ -5,6 +5,7 @@ import { Product } from "./classes/product"
 import { ShoppingCart } from "./classes/shopping-carts"
 import { FiftyPercentDiscount, NoDiscount, TenPercentDiscount } from "./classes/discount"
 import { EnterpriseCustomer, IndividualCustomer } from "./classes/customer"
+import { MessagingProtocol } from "./classes/interfaces/messaging-protocol"
 
 // const fiftyPercentDiscount = new FiftyPercentDiscount()
 const tenPercentDiscount =  new TenPercentDiscount()
@@ -23,7 +24,15 @@ const enterpriseCustomer = new EnterpriseCustomer(
     '2222222222222'
 )
 
-const order = new Order(shoppingCart, messaging, persistency, enterpriseCustomer)
+class MessagingMock implements MessagingProtocol {
+    sendMessage(): void {
+        console.log('A mesagem foi enviada pelo MOCK')
+    }
+} 
+
+const messaginMock = new MessagingMock();
+
+const order = new Order(shoppingCart, messaginMock, persistency, enterpriseCustomer)
 
 shoppingCart.addItem(new Product("Camiseta", 49.9))
 shoppingCart.addItem(new Product("Caderno", 9.9))
