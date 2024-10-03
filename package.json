@@ -6,7 +6,8 @@
   "scripts": {
     "build:frontend": "webpack -w",
     "build:backend": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:silent": "jest --watchAll --silent --noStackTrace"
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",
