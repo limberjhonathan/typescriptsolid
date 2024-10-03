@@ -1,2 +1,4 @@
 npx jest --init
 npx ts-jest config:init
+
+npx jest
