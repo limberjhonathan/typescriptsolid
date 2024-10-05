@@ -54,15 +54,24 @@ describe('ShoppingCart', () => {
         expect(sut.items.length).toBe(0)
         expect(sut.isEmpty()).toBe(true)
     });
+
+    it('should remove products', () => {
+        const { sut } = createSutWithProducts();
+        expect(sut.items.length).toBe(2);
+        sut.removeItem(1);
+        expect(sut.items.length).toBe(1);
+        sut.removeItem(0);
+        expect(sut.isEmpty()).toBe(true);
+      });
     
-    it('should add discount.calculate once when totalWithDiscount is called', () => {
+    it('should call discount.calculate once when totalWithDiscount is called', () => {
         const { sut, discountMock } = createSutWithProducts();
         const discountMockSpy = jest.spyOn(discountMock, 'calculate')
         sut.totalWithDiscount();
         expect(discountMockSpy).toHaveBeenCalledTimes(1)     
     });
 
-    it('should add discount.calculate with total price when totalWithDiscount is called', () => {
+    it('should call discount.calculate with total price when totalWithDiscount is called', () => {
         const { sut, discountMock } = createSutWithProducts();
         const discountMockSpy = jest.spyOn(discountMock, 'calculate')
         sut.totalWithDiscount()
